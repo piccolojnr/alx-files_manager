@@ -8,15 +8,15 @@ class AppController {
   }
   static getStatus(req, res) {
     const status = {
-      redis: this.client.isAlive(),
-      db: this.db.isAlive(),
+      redis: redisClient.isAlive(),
+      db: dbClient.isAlive(),
     };
     res.status(200).send(status);
   }
 
   static async getStats(req, res) {
-    const users = await this.db.nbUsers();
-    const files = await this.db.nbFiles();
+    const users = await dbClient.nbUsers();
+    const files = await dbClient.nbFiles();
     res.status(200).send({ users, files });
   }
 }
