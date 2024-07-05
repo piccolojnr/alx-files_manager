@@ -1,11 +1,12 @@
-import redisClient from "../utils/redis";
-import dbClient from "../utils/db";
+import redisClient from '../utils/redis';
+import dbClient from '../utils/db';
 
 class AppController {
   constructor() {
     this.client = redisClient;
     this.db = dbClient;
   }
+
   static getStatus(req, res) {
     const status = {
       redis: redisClient.isAlive(),
